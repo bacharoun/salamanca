@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad Islámica de Salamanca</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Manrope:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom font families for Tailwind */
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile menu transition */
+        #mobile-menu-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #mobile-menu-panel.hidden {
+            transform: translateX(100%);
+        }
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #mobile-menu-panel {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 font-manrope">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-black/10 backdrop-blur-md rounded-full flex justify-between items-center border border-white/20">
+            <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-8 h-8 bg-green-700/80 rounded-full flex items-center justify-center">
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                </div>
+                <span class="text-lg font-bold text-white font-manrope">CIS</span>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-10 rtl:space-x-reverse">
+                <a href="index.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.home">Inicio</a>
+                <a href="about.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.about">Quiénes Somos</a>
+                <a href="activities.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.activities">Actividades</a>
+                <a href="prayers.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.prayerTimes">Horarios de oración</a>
+                <a href="contact.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.contact">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <button id="lang-toggle-desktop" class="hidden lg:flex items-center text-white/80 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9H3"></path></svg>
+                    <span class="ml-2 rtl:mr-2 text-sm font-bold" data-translate-lang-toggle>ES</span>
+                </button>
+                <a href="donation.html" class="hidden sm:block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold py-2 px-5 rounded-full transition-colors" data-translate="nav.donations">Donar</a>
+                <button id="open-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-90 backdrop-blur-lg z-[100] hidden">
+        <div id="mobile-menu-panel" class="absolute top-0 right-0 h-full w-4/5 max-w-sm bg-gray-900 shadow-2xl p-8 hidden">
+           <button id="close-menu-btn" class="absolute top-8 right-8 text-white/70 hover:text-white">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          <nav class="flex flex-col space-y-8 mt-16 text-right">
+             <a href="index.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.home">Inicio</a>
+             <a href="about.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.about">Quiénes Somos</a>
+             <a href="activities.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.activities">Actividades</a>
+             <a href="prayers.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.prayerTimes">Horarios de oración</a>
+             <a href="contact.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.contact">Contacto</a>
+             <a href="donation.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors font-playfair" data-translate="nav.donations">Donar</a>
+            <button id="lang-toggle-mobile" class="flex items-center justify-end text-white/80 hover:text-white transition-colors pt-8">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9H3"></path></svg>
+              <span class="ml-2 rtl:mr-2 font-bold" data-translate-lang-toggle>ES</span>
+            </button>
+          </nav>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen min-h-[700px] text-white flex flex-col justify-center items-center overflow-hidden">
+            <video autoPlay loop muted playsInline class="absolute z-0 w-auto min-w-full min-h-full max-w-none object-cover">
+                <source src="images/video.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/40 to-transparent"></div>
+            <div class="relative z-10 text-center px-6">
+                <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold">
+                    <span class="block" data-translate="hero.line1">Un Espacio de</span>
+                    <span class="block text-yellow-300" data-translate="hero.line2">Fe y Comunidad</span>
+                </h1>
+                <p class="font-manrope mt-6 text-lg md:text-xl max-w-2xl mx-auto text-white/80" data-translate="hero.subtitle">Salamanca es nuestro hogar. La fe es nuestro camino. La comunidad es nuestra fuerza.</p>
+            </div>
+            <div class="absolute bottom-10 z-10 bg-black/20 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 text-center">
+                <span class="text-white/80 text-sm">
+                    <span data-translate="hero.nextPrayer">Próxima oración</span>: 
+                    <strong id="next-prayer-name" class="text-white"></strong> en
+                </span>
+                <span id="prayer-countdown" class="ml-3 font-mono text-lg tracking-widest">00:00:00</span>
+            </div>
+        </section>
+
+        <!-- Welcome Section -->
+        <section id="about" class="py-24 md:py-32 bg-gray-900 text-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <img src="images/mosque2.webp" alt="Fachada de la Mezquita de la Comunidad Islámica de Salamanca" class="relative w-full h-full object-cover rounded-lg shadow-2xl"/>
+                    </div>
+                    <div class="welcome-text-content">
+                        <h2 class="font-playfair text-4xl lg:text-5xl font-bold mb-6" data-translate="welcome.title">Salam y bienvenidos a nuestro hogar digital</h2>
+                        <p class="font-manrope text-lg text-gray-300 leading-relaxed" data-translate="welcome.p1">Somos una comunidad diversa y vibrante...</p>
+                        <a href="about.html" class="mt-8 inline-flex items-center font-bold text-yellow-300 hover:text-yellow-400 group">
+                            <span data-translate="welcome.button">Nuestra Misión</span>
+                            <svg class="ml-2 rtl:mr-2 transition-transform group-hover:translate-x-1 welcome-arrow w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="activities" class="py-24 md:py-32 bg-gray-900 text-white">
+            <div class="container mx-auto px-6">
+                <h2 class="font-playfair text-4xl lg:text-5xl font-bold text-center mb-16" data-translate="upcomingEvents.title">Calendario de Actividades</h2>
+                <div class="space-y-8" id="events-list">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+                <div class="text-center mt-16">
+                     <a href="activities.html" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-8 rounded-full transition-colors" data-translate="upcomingEvents.button">Ver Todas las Actividades</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ask the AI Section -->
+        <section class="py-24 md:py-32 bg-gray-50">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 mx-auto text-yellow-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 18l-1.813-2.096a4.5 4.5 0 00-6.364-6.364l-2.096-1.813L3 6l2.096 1.813a4.5 4.5 0 006.364 6.364zm10.187-.81L21 15l-1.813 2.096a4.5 4.5 0 01-6.364 6.364l-2.096 1.813L9 21l2.096-1.813a4.5 4.5 0 016.364-6.364z"></path></svg>
+                 <h2 class="font-playfair text-4xl lg:text-5xl font-bold text-gray-900 mb-4" data-translate="aiSect.title">Explora el Islam</h2>
+                 <p class="font-manrope text-lg text-gray-600 mb-10 max-w-2xl mx-auto" data-translate="aiSect.subtitle">Haz una pregunta y recibe una respuesta...</p>
+                
+                <form id="ai-form" class="relative mb-6">
+                    <input id="ai-question-input" type="text" placeholder="Ej: ¿Qué son los cinco pilares del Islam?" data-translate-placeholder="aiSect.placeholder" class="w-full pl-6 pr-32 py-4 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <button type="submit" class="absolute top-1/2 right-2 -translate-y-1/2 bg-green-700 hover:bg-green-800 text-white font-bold py-2.5 px-6 rounded-full transition-colors disabled:bg-gray-400" data-translate="aiSect.button">
+                         Enviar
+                    </button>
+                </form>
+
+                <div id="ai-response-container" class="mt-8 min-h-[150px] text-left">
+                    <!-- AI Response will be populated here -->
+                </div>
+                 <p class="text-center text-xs text-gray-500 mt-4" data-translate="aiSect.disclaimer">Herramienta de IA para información...</p>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donations" class="py-24 md:py-40 bg-cover bg-fixed bg-center" style="background-image: url('https://images.unsplash.com/photo-1547190344-7195f1f4de63?q=80&w=2890&auto=format&fit=crop');">
+            <div class="container mx-auto px-6 text-center bg-black/50 backdrop-blur-sm p-12 md:p-16 rounded-xl">
+                <h2 class="font-playfair text-4xl lg:text-5xl font-bold text-white mb-4" data-translate="donations.title">Construye con Nosotros</h2>
+                <p class="font-manrope text-lg text-white/80 max-w-3xl mx-auto mb-6" data-translate="donations.subtitle">Tu apoyo es la base de nuestro servicio...</p>
+                <p class="font-manrope text-gray-300 max-w-2xl mx-auto mb-10" data-translate="donations.p1">Cada donación, por pequeña que sea...</p>
+                <a href="donation.html" class="bg-yellow-400 hover:bg-yellow-300 text-green-900 font-bold py-4 px-12 rounded-full transition-transform transform hover:scale-105 inline-block text-lg" data-translate="donations.button">
+                    Apoyar la Causa
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="font-manrope text-sm" data-translate="footer.rights">© 2025 Comunidad Islámica de Salamanca.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- STATE & DATA ---
+            const translations = {
+                es: {
+                    langName: "ES",
+                    nav: { home: "Inicio", about: "Quiénes Somos", activities: "Actividades", prayerTimes: "Horarios de oración", donations: "Donar", contact: "Contacto" },
+                    hero: { line1: "Un Espacio de", line2: "Fe y Comunidad", subtitle: "Salamanca es nuestro hogar. La fe es nuestro camino. La comunidad es nuestra fuerza.", nextPrayer: "Próxima oración", fajr: "Fajr", dhuhr: "Dhuhr", asr: "Asr", maghrib: "Maghrib", isha: "Isha" },
+                    welcome: { title: "Salam y bienvenidos a nuestro hogar digital", p1: "Somos una comunidad diversa y vibrante unida por la fe, el respeto mutuo y el deseo de contribuir positivamente a la sociedad de Salamanca. Nuestro centro es más que un lugar de oración; es un punto de encuentro para el aprendizaje, el apoyo y la amistad.", button: "Nuestra Misión" },
+                    aiSect: { title: "Explora el Islam", subtitle: "Haz una pregunta y recibe una respuesta clara e informativa, generada por IA.", placeholder: "Ej: ¿Qué son los cinco pilares del Islam?", button: "Enviar", disclaimer: "Herramienta de IA para información. Para guía religiosa, consulte a un erudito.", loading: "Generando respuesta...", error: "Lo sentimos, no se pudo obtener una respuesta. Inténtelo de nuevo." },
+                    upcomingEvents: { title: "Calendario de Actividades", event1: { day: "28", month: "JUN", title: "Círculo de Tafsir", time: "Después de Isha", description: "Profundizando en el significado del Corán." }, event2: { day: "05", month: "JUL", title: "Iftar Comunitario", time: "Al atardecer", description: "Rompiendo el ayuno juntos en hermandad." }, event3: { day: "12", month: "JUL", title: "Taller para Jóvenes", time: "17:00", description: "Identidad y desafíos en el mundo moderno." }, button: "Ver Todas las Actividades" },
+                    donations: { title: "Construye con Nosotros", subtitle: "Tu apoyo es la base de nuestro servicio a la comunidad.", p1: "Cada donación, por pequeña que sea, nos ayuda a mantener nuestro centro, organizar programas educativos y llevar a cabo proyectos de caridad. Es una sadaqah jariyah (caridad continua) que beneficia a todos.", button: "Apoyar la Causa" },
+                    footer: { rights: "© 2025 Comunidad Islámica de Salamanca." }
+                },
+                ar: {
+                    langName: "AR",
+                    nav: { home: "الرئيسية", about: "من نحن", activities: "الأنشطة", prayerTimes: "أوقات الصلاة", donations: "تبرع", contact: "اتصل بنا" },
+                    hero: { line1: "مساحة من", line2: "الإيمان والمجتمع", subtitle: "سلامنكا هي دارنا. الإيمان هو طريقنا. والمجتمع هو قوتنا.", nextPrayer: "الصلاة القادمة", fajr: "الفجر", dhuhr: "الظهر", asr: "العصر", maghrib: "المغرب", isha: "العشاء" },
+                    welcome: { title: "السلام عليكم، وأهلاً بكم في بيتنا الرقمي", p1: "نحن مجتمع متنوع وحيوي يوحده الإيمان والاحترام المتبادل والرغبة في المساهمة بإيجابية في مجتمع سلامنكا. مركزنا هو أكثر من مجرد مكان للعبادة؛ إنه نقطة التقاء للتعلم والدعم والصداقة.", button: "رسالتنا" },
+                    aiSect: { title: "استكشف الإسلام", subtitle: "اطرح سؤالاً واحصل على إجابة واضحة وغنية بالمعلومات، مُولَّدة بالذكاء الاصطناعي.", placeholder: "مثال: ما هي أركان الإسلام الخمسة؟", button: "إرسال", disclaimer: "أداة ذكاء اصطناعي للمعلومات العامة. للإرشاد الديني، يرجى استشارة عالم مؤهل.", loading: "جاري إنشاء الإجابة...", error: "عذرًا، تعذر الحصول على إجابة. يرجى المحاولة مرة أخرى." },
+                    upcomingEvents: { title: "جدول الفعاليات", event1: { day: "٢٨", month: "يونيو", title: "حلقة تفسير", time: "بعد صلاة العشاء", description: "تعميق فهم معاني القرآن الكريم." }, event2: { day: "٠٥", month: "يوليو", title: "إفطار جماعي", time: "عند غروب الشمس", description: "لنفطر معًا في جو من الأخوة." }, event3: { day: "١٢", month: "يوليو", title: "ورشة عمل للشباب", time: "١٧:٠٠", description: "الهوية وتحديات العصر الحديث." }, button: "عرض كل الأنشطة" },
+                    donations: { title: "ابنِ معنا", subtitle: "دعمكم هو أساس خدمتنا للمجتمع.", p1: "كل تبرع، مهما كان صغيراً، يساعدنا في الحفاظ على مركزنا، وتنظيم برامج تعليمية، وتنفيذ مشاريع خيرية. إنها صدقة جارية تعود بالنفع على الجميع.", button: "ادعم القضية" },
+                    footer: { rights: "© 2025 الجالية الإسلامية في سلامنكا." }
+                }
+            };
+            let currentLang = localStorage.getItem('selectedLanguage') || 'es';
+            const PRAYER_TIMES = { Fajr: "05:45", Dhuhr: "14:15", Asr: "18:05", Maghrib: "21:40", Isha: "23:00" };
+
+            // --- DOM ELEMENTS ---
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+            const aiForm = document.getElementById('ai-form');
+            const aiQuestionInput = document.getElementById('ai-question-input');
+            const aiResponseContainer = document.getElementById('ai-response-container');
+            const eventsListContainer = document.getElementById('events-list');
+
+            // --- TRANSLATION FUNCTION ---
+            function updateContent(lang) {
+                const t = translations[lang];
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    const value = key.split('.').reduce((obj, k) => obj && obj[k], t);
+                    if (value) el.textContent = value;
+                });
+                 document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+                    const key = el.getAttribute('data-translate-placeholder');
+                    const value = key.split('.').reduce((obj, k) => obj && obj[k], t);
+                    if (value) el.placeholder = value;
+                });
+                document.querySelectorAll('[data-translate-lang-toggle]').forEach(el => {
+                    el.textContent = t.langName;
+                });
+                
+                // Update specific dynamic content
+                populateEvents(lang);
+                
+                // Update page direction and fonts
+                htmlEl.lang = lang;
+                const isArabic = lang === 'ar';
+                htmlEl.dir = isArabic ? 'rtl' : 'ltr';
+                bodyEl.className = `bg-gray-900 ${isArabic ? 'font-cairo' : 'font-manrope'}`;
+                 document.querySelectorAll('.welcome-text-content').forEach(el => {
+                    el.classList.toggle('md:text-right', isArabic);
+                    el.classList.toggle('md:text-left', !isArabic);
+                });
+                document.querySelectorAll('.welcome-arrow').forEach(el => {
+                    el.classList.toggle('transform', isArabic);
+                    el.classList.toggle('rotate-180', isArabic);
+                });
+                 document.querySelectorAll('.mobile-nav-link').forEach(el => {
+                    el.classList.toggle('font-cairo', isArabic);
+                    el.classList.toggle('font-playfair', !isArabic);
+                });
+            }
+
+            // --- DYNAMIC CONTENT POPULATION ---
+            function populateEvents(lang) {
+                const t = translations[lang].upcomingEvents;
+                const events = [t.event1, t.event2, t.event3];
+                eventsListContainer.innerHTML = events.map(event => `
+                    <div class="grid md:grid-cols-12 gap-8 items-center bg-gray-800/50 p-6 rounded-lg hover:bg-gray-800 transition-colors">
+                        <div class="md:col-span-2 text-center">
+                            <p class="text-4xl font-bold text-yellow-300">${event.day}</p>
+                            <p class="text-lg font-semibold">${event.month}</p>
+                        </div>
+                        <div class="md:col-span-7">
+                            <h3 class="text-2xl font-bold mb-1 ${lang === 'ar' ? 'font-cairo' : 'font-playfair'}">${event.title}</h3>
+                            <p class="text-gray-400">${event.description}</p>
+                        </div>
+                        <div class="md:col-span-3 text-center md:text-right">
+                            <span class="bg-green-700/50 text-green-200 text-sm font-bold px-4 py-2 rounded-full">${event.time}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // --- PRAYER TIME COUNTDOWN ---
+            function startPrayerCountdown() {
+                setInterval(() => {
+                    const now = new Date();
+                    let nextPrayer = null, nextPrayerTime = null;
+                    const prayerEntries = Object.entries(PRAYER_TIMES);
+                    
+                    for (const [name, time] of prayerEntries) {
+                        const [h, m] = time.split(':').map(Number);
+                        const pDate = new Date(); pDate.setHours(h, m, 0, 0);
+                        if (pDate > now) { nextPrayer = name; nextPrayerTime = pDate; break; }
+                    }
+                    if (!nextPrayer) {
+                        const [name, time] = prayerEntries[0]; const [h, m] = time.split(':').map(Number);
+                        const tomorrow = new Date(); tomorrow.setDate(now.getDate() + 1);
+                        tomorrow.setHours(h, m, 0, 0); nextPrayer = name; nextPrayerTime = tomorrow;
+                    }
+                    
+                    const diff = nextPrayerTime - now;
+                    const h = String(Math.floor(diff / 36e5)).padStart(2, '0');
+                    const m = String(Math.floor((diff % 36e5) / 6e4)).padStart(2, '0');
+                    const s = String(Math.floor((diff % 6e4) / 1000)).padStart(2, '0');
+                    
+                    const prayerName = translations[currentLang].hero[nextPrayer.toLowerCase()] || nextPrayer;
+                    document.getElementById('next-prayer-name').textContent = prayerName;
+                    document.getElementById('prayer-countdown').textContent = `${h}:${m}:${s}`;
+                }, 1000);
+            }
+
+            // --- MOBILE MENU ---
+            function setupMobileMenu() {
+                const openBtn = document.getElementById('open-menu-btn');
+                const closeBtn = document.getElementById('close-menu-btn');
+                
+                const openMenu = () => {
+                    mobileMenuOverlay.classList.remove('hidden');
+                    setTimeout(() => {
+                         mobileMenuPanel.classList.remove('hidden');
+                    }, 10);
+                };
+
+                const closeMenu = () => {
+                    mobileMenuPanel.classList.add('hidden');
+                    setTimeout(() => {
+                        mobileMenuOverlay.classList.add('hidden');
+                    }, 300);
+                };
+                
+                openBtn.addEventListener('click', openMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                mobileMenuOverlay.addEventListener('click', closeMenu);
+                mobileMenuPanel.addEventListener('click', (e) => e.stopPropagation());
+                document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMenu));
+            }
+            
+            // --- GEMINI API ---
+            aiForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const question = aiQuestionInput.value.trim();
+                if (!question) return;
+
+                const formButton = aiForm.querySelector('button');
+                formButton.disabled = true;
+                aiResponseContainer.innerHTML = `<div class="text-center p-6"><svg class="animate-spin mx-auto h-8 w-8 text-green-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><p class="mt-2" data-translate="aiSect.loading">${translations[currentLang].aiSect.loading}</p></div>`;
+
+                const lang = currentLang === 'es' ? 'Spanish' : 'Arabic';
+                const prompt = `You are an AI assistant for the Comunidad Islámica de Salamanca's website. Provide clear, respectful, informative answers to questions about Islam based on mainstream Sunni teachings, suitable for a general audience. Avoid complex fiqh debates. Maintain a compassionate tone. Keep the answer to a few paragraphs. User's question: '${question}'. Answer in ${lang}.`;
+
+                try {
+                    const apiKey = "AIzaSyBkBXIa5L-486Pcg-wWudhdjHWc5I0rtX4";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const response = await fetch(apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }) });
+                    
+                    if (!response.ok) throw new Error('API Response not OK');
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates[0].content.parts[0]) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        const formattedText = text.replace(/\n/g, '<br />');
+                        const textDirClass = currentLang === 'ar' ? 'text-right' : 'text-left';
+                        aiResponseContainer.innerHTML = `<div class="p-8 bg-white rounded-lg shadow-sm text-gray-800 leading-relaxed prose max-w-none ${textDirClass}" >${formattedText}</div>`;
+                    } else {
+                        throw new Error('Unexpected API response structure.');
+                    }
+                } catch (err) {
+                    aiResponseContainer.innerHTML = `<p class="text-center text-red-600 p-4 bg-red-100 rounded-lg" data-translate="aiSect.error">${translations[currentLang].aiSect.error}</p>`;
+                } finally {
+                    formButton.disabled = false;
+                }
+            });
+
+            // --- LANGUAGE TOGGLE ---
+            function setupLangToggle() {
+                const toggle = () => {
+                    currentLang = currentLang === 'es' ? 'ar' : 'es';
+                    localStorage.setItem('selectedLanguage', currentLang);
+                    updateContent(currentLang);
+                };
+                document.getElementById('lang-toggle-desktop').addEventListener('click', toggle);
+                document.getElementById('lang-toggle-mobile').addEventListener('click', toggle);
+            }
+
+            // --- INITIALIZATION ---
+            updateContent(currentLang);
+            startPrayerCountdown();
+            setupMobileMenu();
+            setupLangToggle();
+        });
+    </script>
+
+</body>
+</html>

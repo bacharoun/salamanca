@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones - Comunidad Islámica de Salamanca</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Manrope:wght@400;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        .font-manrope { font-family: 'Manrope', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+        html { scroll-behavior: smooth; }
+        #mobile-menu-overlay.hidden, #mobile-menu-panel.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #mobile-menu-panel.hidden { transform: translateX(100%); }
+        #mobile-menu-overlay { transition: opacity 0.3s ease-in-out; }
+        #mobile-menu-panel { transition: transform 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-900 font-manrope text-white">
+
+    <!-- Header -->
+   <header id="header" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-6 py-3 bg-black/10 backdrop-blur-md rounded-full flex justify-between items-center border border-white/20">
+            <a href="#home" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <div class="w-8 h-8 bg-green-700/80 rounded-full flex items-center justify-center">
+                    <div class="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                </div>
+                <span class="text-lg font-bold text-white font-manrope">CIS</span>
+            </a>
+            <nav class="hidden lg:flex items-center space-x-10 rtl:space-x-reverse">
+                <a href="index.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.home">Inicio</a>
+                <a href="about.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.about">Quiénes Somos</a>
+                <a href="activities.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.activities">Actividades</a>
+                <a href="prayers.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.prayerTimes">Horarios de oración</a>
+                <a href="contact.html" class="font-medium text-white/80 hover:text-white transition-colors" data-translate="nav.contact">Contacto</a>
+            </nav>
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <button id="lang-toggle-desktop" class="hidden lg:flex items-center text-white/80 hover:text-white transition-colors">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9H3"></path></svg>
+                    <span class="ml-2 rtl:mr-2 text-sm font-bold" data-translate-lang-toggle>ES</span>
+                </button>
+                <a href="donation.html" class="hidden sm:block bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold py-2 px-5 rounded-full transition-colors" data-translate="nav.donations">Donar</a>
+                <button id="open-menu-btn" class="lg:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-90 backdrop-blur-lg z-[100] hidden">
+        <div id="mobile-menu-panel" class="absolute top-0 right-0 h-full w-4/5 max-w-sm bg-gray-900 shadow-2xl p-8 hidden">
+           <button id="close-menu-btn" class="absolute top-8 right-8 text-white/70 hover:text-white">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+          <nav class="flex flex-col space-y-8 mt-16 text-right">
+             <a href="index.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors" data-translate="nav.home">Inicio</a>
+             <a href="about.html" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors" data-translate="nav.about">Quiénes Somos</a>
+             <a href="index.html#activities" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors" data-translate="nav.activities">Actividades</a>
+             <a href="#prayer-times" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors" data-translate="nav.prayerTimes">Horarios</a>
+             <a href="index.html#contact" class="mobile-nav-link text-2xl font-bold text-white/80 hover:text-white transition-colors" data-translate="nav.contact">Contacto</a>
+             <a href="#donations" class="mobile-nav-link text-2xl font-bold text-white hover:text-white transition-colors" data-translate="nav.donations">Donar</a>
+            <button id="lang-toggle-mobile" class="flex items-center justify-end text-white/80 hover:text-white transition-colors pt-8">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m-9 9H3"></path></svg>
+              <span class="ml-2 rtl:mr-2 font-bold" data-translate-lang-toggle>ES</span>
+            </button>
+          </nav>
+        </div>
+    </div>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="donations" class="relative pt-48 pb-24 text-white text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1594400790447-f793a3a9b183?q=80&w=2874&auto=format&fit=crop');">
+            <div class="container mx-auto px-6">
+                <h1 class="font-playfair text-5xl md:text-7xl font-bold" data-translate="donationsHero.title">Tu Generosidad Construye Comunidad</h1>
+                <p class="font-manrope mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-300" data-translate="donationsHero.subtitle">"Quienes gastan su hacienda por la causa de Alá se parecen a un grano que produce siete espigas, cada una de las cuales contiene cien granos." (Corán 2:261)</p>
+            </div>
+        </section>
+
+        <!-- Donation Methods Section -->
+        <section class="pt-20 pb-24 md:pb-32 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="font-playfair text-4xl lg:text-5xl font-bold text-center mb-16 text-white" data-translate="methods.title">Elige Tu Forma de Donar</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- Bank Transfer Card -->
+                    <div class="donation-card bg-gray-800/50 p-8 rounded-lg border border-gray-700">
+                        <h3 class="font-playfair text-3xl font-bold mb-4 text-white" data-translate="bank.title">Transferencia Bancaria</h3>
+                        <p class="text-gray-300 mb-6" data-translate="bank.desc">Realiza una donación directa a nuestra cuenta bancaria. Es un método seguro y sin comisiones.</p>
+                        <div class="space-y-4 text-left">
+                            <div>
+                                <p class="text-sm text-gray-400" data-translate="bank.beneficiary_label">Beneficiario</p>
+                                <p class="text-lg font-semibold text-white">COMUNIDAD ISLAMICA DE SALAMANCA</p>
+                            </div>
+                             <div>
+                                <p class="text-sm text-gray-400" data-translate="bank.concept_label">Concepto</p>
+                                <p class="text-lg font-semibold text-white">MEZQUITA AL RAHMAN</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400" data-translate="bank.iban_label">IBAN</p>
+                                <div class="flex items-center justify-between bg-gray-900 p-3 rounded-md">
+                                    <span id="iban-number" class="font-mono text-yellow-300">ES58 2130 2251 0500 3538 9425</span>
+                                    <button id="copy-iban-btn" class="bg-green-700 hover:bg-green-600 p-2 rounded-md">
+                                        <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                    </button>
+                                </div>
+                                <span id="copy-success-msg" class="text-green-400 text-xs mt-1 hidden" data-translate="bank.copied">¡Copiado!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PayPal Card -->
+                    <div class="donation-card bg-gray-800/50 p-8 rounded-lg border border-gray-700 flex flex-col items-center text-center">
+                        <img src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg" alt="PayPal" class="w-32 mb-6">
+                        <h3 class="font-playfair text-3xl font-bold mb-4 text-white" data-translate="paypal.title">Donar con PayPal</h3>
+                        <p class="text-gray-300 mb-6 flex-grow" data-translate="paypal.desc">Utiliza la plataforma de pago online más reconocida del mundo para hacer tu donación de forma rápida y segura.</p>
+                        <a href="#" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors" data-translate="paypal.button">Donar Ahora</a>
+                    </div>
+
+                    <!-- Bizum Card -->
+                    <div class="donation-card bg-gray-800/50 p-8 rounded-lg border border-gray-700 flex flex-col items-center text-center">
+                        <img src="images/bizum.png" alt="Bizum" class="w-32 mb-6 bg-white p-2 rounded-md">
+                        <h3 class="font-playfair text-3xl font-bold mb-4 text-white" data-translate="bizum.title">Donar con Bizum</h3>
+                        <p class="text-gray-300 mb-6 flex-grow" data-translate="bizum.desc">Envía tu donación de forma instantánea desde tu móvil usando nuestro código de ONG.</p>
+                        <p class="text-gray-400" data-translate="bizum.code_label">Nuestro Código:</p>
+                        <p class="font-mono text-4xl font-bold text-yellow-300 my-2">00000</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <!-- Impact Section -->
+        <section class="py-24 md:py-32 bg-gray-800/40">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="font-playfair text-4xl lg:text-5xl font-bold mb-6 text-white" data-translate="impact.title">¿A Dónde Va Tu Donación?</h2>
+                <p class="text-gray-300 max-w-3xl mx-auto mb-16" data-translate="impact.subtitle">Cada euro contribuye a construir un futuro más brillante para nuestra comunidad.</p>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="impact-item">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-green-700/30 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2 text-white" data-translate="impact.item1_title">Mantenimiento del Centro</h3>
+                        <p class="text-gray-400" data-translate="impact.item1_text">Aseguramos que nuestro lugar de oración y reunión esté siempre limpio, seguro y acogedor.</p>
+                    </div>
+                     <div class="impact-item">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-yellow-400/20 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2 text-white" data-translate="impact.item2_title">Programas Educativos</h3>
+                        <p class="text-gray-400" data-translate="impact.item2_text">Financiamos clases de Corán y árabe para niños y adultos, y organizamos charlas y talleres.</p>
+                    </div>
+                     <div class="impact-item">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-green-700/30 rounded-full flex items-center justify-center">
+                             <svg class="w-10 h-10 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2 text-white" data-translate="impact.item3_title">Eventos Comunitarios</h3>
+                        <p class="text-gray-400" data-translate="impact.item3_text">Organizamos iftars, celebraciones del Eid y actividades sociales para fortalecer nuestros lazos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-gray-900 text-gray-400 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="font-manrope text-sm" data-translate="footer.rights">© 2024 Comunidad Islámica de Salamanca.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const translations = {
+                es: {
+                    nav: { home: "Inicio", about: "Quiénes Somos", activities: "Actividades", prayerTimes: "Horarios de oración", donations: "Donar", contact: "Contacto" },
+                    donationsHero: { title: "Tu Generosidad Construye Comunidad", subtitle: `"Quienes gastan su hacienda por la causa de Alá se parecen a un grano que produce siete espigas, cada una de las cuales contiene cien granos." (Corán 2:261)` },
+                    methods: { title: "Elige Tu Forma de Donar" },
+                    bank: { title: "Transferencia Bancaria", desc: "Realiza una donación directa a nuestra cuenta bancaria. Es un método seguro y sin comisiones.", beneficiary_label: "Beneficiario", concept_label: "Concepto", iban_label: "IBAN", copied: "¡Copiado!" },
+                    paypal: { title: "Donar con PayPal", desc: "Utiliza la plataforma de pago online más reconocida del mundo para hacer tu donación de forma rápida y segura.", button: "Donar Ahora" },
+                    bizum: { title: "Donar con Bizum", desc: "Envía tu donación de forma instantánea desde tu móvil usando nuestro código de ONG.", code_label: "Nuestro Código:" },
+                    impact: { title: "¿A Dónde Va Tu Donación?", subtitle: "Cada euro contribuye a construir un futuro más brillante para nuestra comunidad.", item1_title: "Mantenimiento del Centro", item1_text: "Aseguramos que nuestro lugar de oración y reunión esté siempre limpio, seguro y acogedor.", item2_title: "Programas Educativos", item2_text: "Financiamos clases de Corán y árabe para niños y adultos, y organizamos charlas y talleres.", item3_title: "Eventos Comunitarios", item3_text: "Organizamos iftars, celebraciones del Eid y actividades sociales para fortalecer nuestros lazos." },
+                    footer: { rights: "© 2024 Comunidad Islámica de Salamanca." }
+                },
+                ar: {
+                    langName: "AR",
+                    nav: { home: "الرئيسية", about: "من نحن", activities: "الأنشطة", prayerTimes: "الأوقات", donations: "تبرع", contact: "اتصل بنا" },
+                    donationsHero: { title: "كرمكم يبني المجتمع", subtitle: `"مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِilِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ فِي كُلِّ سُنبُلَةٍ مِّائَةُ حَبَّةٍ" (البقرة: 261)` },
+                    methods: { title: "اختر طريقة التبرع" },
+                    bank: { title: "تحويل بنكي", desc: "تبرع مباشرة إلى حسابنا البنكي. إنها طريقة آمنة وبدون عمولات.", beneficiary_label: "المستفيد", concept_label: "المفهوم", iban_label: "رقم الحساب المصرفي الدولي (IBAN)", copied: "تم النسخ!" },
+                    paypal: { title: "تبرع عبر PayPal", desc: "استخدم أشهر منصة دفع عبر الإنترنت في العالم لتقديم تبرعك بسرعة وأمان.", button: "تبرع الآن" },
+                    bizum: { title: "تبرع عبر Bizum", desc: "أرسل تبرعك فوراً من هاتفك باستخدام رمز المنظمة غير الحكومية الخاص بنا.", code_label: "رمزنا:" },
+                    impact: { title: "أين تذهب تبرعاتكم؟", subtitle: "كل يورو يساهم في بناء مستقبل أكثر إشراقًا لمجتمعنا.", item1_title: "صيانة المركز", item1_text: "نضمن أن مكان عبادتنا واجتماعنا دائمًا نظيف وآمن ومرحب بالجميع.", item2_title: "البرامج التعليمية", item2_text: "نموّل دروس القرآن واللغة العربية للأطفال والكبار، وننظم محاضرات وورش عمل.", item3_title: "الفعاليات المجتمعية", item3_text: "ننظم وجبات الإفطار واحتفالات العيد والأنشطة الاجتماعية لتقوية روابطنا." },
+                    footer: { rights: "© 2024 الجالية الإسلامية في سلامنكا." }
+                }
+            };
+            let currentLang = localStorage.getItem('selectedLanguage') || 'es';
+
+            function updateContent(lang) {
+                const t = translations[lang];
+                htmlEl.lang = lang;
+                htmlEl.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                bodyEl.className = `bg-gray-900 ${lang === 'ar' ? 'font-cairo' : 'font-manrope'}`;
+                
+                document.querySelectorAll('[data-translate]').forEach(el => {
+                    const key = el.getAttribute('data-translate');
+                    const value = key.split('.').reduce((obj, k) => obj && obj[k], t);
+                    if (value) el.textContent = value;
+                });
+                document.querySelectorAll('[data-translate-lang-toggle]').forEach(el => {
+                    el.textContent = t.langName;
+                });
+                document.querySelectorAll('.mobile-nav-link').forEach(el => {
+                    el.classList.toggle('font-cairo', lang === 'ar');
+                    el.classList.toggle('font-playfair', lang !== 'ar');
+                });
+            }
+
+            const htmlEl = document.documentElement;
+            const bodyEl = document.body;
+
+            // --- MOBILE MENU ---
+             function setupMobileMenu() {
+                const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+                const mobileMenuPanel = document.getElementById('mobile-menu-panel');
+                const openBtn = document.getElementById('open-menu-btn');
+                const closeBtn = document.getElementById('close-menu-btn');
+                const openMenu = () => {
+                    mobileMenuOverlay.classList.remove('hidden');
+                    setTimeout(() => mobileMenuPanel.classList.remove('hidden'), 10);
+                };
+                const closeMenu = () => {
+                    mobileMenuPanel.classList.add('hidden');
+                    setTimeout(() => mobileMenuOverlay.classList.add('hidden'), 300);
+                };
+                openBtn.addEventListener('click', openMenu);
+                closeBtn.addEventListener('click', closeMenu);
+                mobileMenuOverlay.addEventListener('click', closeMenu);
+                mobileMenuPanel.addEventListener('click', (e) => e.stopPropagation());
+                document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMenu));
+            }
+
+            // --- LANGUAGE TOGGLE ---
+            function setupLangToggle() {
+                const toggle = () => {
+                    currentLang = currentLang === 'es' ? 'ar' : 'es';
+                    localStorage.setItem('selectedLanguage', currentLang);
+                    updateContent(currentLang);
+                };
+                document.getElementById('lang-toggle-desktop').addEventListener('click', toggle);
+                document.getElementById('lang-toggle-mobile').addEventListener('click', toggle);
+            }
+
+            // --- IBAN COPY ---
+            function setupIbanCopy() {
+                const copyBtn = document.getElementById('copy-iban-btn');
+                const successMsg = document.getElementById('copy-success-msg');
+                if (!copyBtn) return;
+                
+                copyBtn.addEventListener('click', () => {
+                    const iban = document.getElementById('iban-number').innerText;
+                    const tempInput = document.createElement('input');
+                    tempInput.value = iban;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                    
+                    successMsg.classList.remove('hidden');
+                    setTimeout(() => {
+                        successMsg.classList.add('hidden');
+                    }, 2000);
+                });
+            }
+
+            // --- INITIALIZATION ---
+            updateContent(currentLang);
+            setupMobileMenu();
+            setupLangToggle();
+            setupIbanCopy();
+        });
+    </script>
+</body>
+</html>
