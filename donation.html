@@ -93,7 +93,7 @@
         <section class="pt-20 pb-24 md:pb-32 bg-gray-900">
             <div class="container mx-auto px-6">
                 <h2 class="font-playfair text-4xl lg:text-5xl font-bold text-center mb-16 text-white" data-translate="methods.title">Elige Tu Forma de Donar</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="grid md:grid-cols-2 gap-10 lg:max-w-4xl lg:mx-auto">
                     
                     <!-- Bank Transfer Card -->
                     <div class="donation-card bg-gray-800/50 p-8 rounded-lg border border-gray-700">
@@ -127,15 +127,6 @@
                         <h3 class="font-playfair text-3xl font-bold mb-4 text-white" data-translate="paypal.title">Donar con PayPal</h3>
                         <p class="text-gray-300 mb-6 flex-grow" data-translate="paypal.desc">Utiliza la plataforma de pago online más reconocida del mundo para hacer tu donación de forma rápida y segura.</p>
                         <a href="#" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors" data-translate="paypal.button">Donar Ahora</a>
-                    </div>
-
-                    <!-- Bizum Card -->
-                    <div class="donation-card bg-gray-800/50 p-8 rounded-lg border border-gray-700 flex flex-col items-center text-center">
-                        <img src="images/bizum.png" alt="Bizum" class="w-32 mb-6 bg-white p-2 rounded-md">
-                        <h3 class="font-playfair text-3xl font-bold mb-4 text-white" data-translate="bizum.title">Donar con Bizum</h3>
-                        <p class="text-gray-300 mb-6 flex-grow" data-translate="bizum.desc">Envía tu donación de forma instantánea desde tu móvil usando nuestro código de ONG.</p>
-                        <p class="text-gray-400" data-translate="bizum.code_label">Nuestro Código:</p>
-                        <p class="font-mono text-4xl font-bold text-yellow-300 my-2">00000</p>
                     </div>
 
                 </div>
@@ -190,7 +181,6 @@
                     methods: { title: "Elige Tu Forma de Donar" },
                     bank: { title: "Transferencia Bancaria", desc: "Realiza una donación directa a nuestra cuenta bancaria. Es un método seguro y sin comisiones.", beneficiary_label: "Beneficiario", concept_label: "Concepto", iban_label: "IBAN", copied: "¡Copiado!" },
                     paypal: { title: "Donar con PayPal", desc: "Utiliza la plataforma de pago online más reconocida del mundo para hacer tu donación de forma rápida y segura.", button: "Donar Ahora" },
-                    bizum: { title: "Donar con Bizum", desc: "Envía tu donación de forma instantánea desde tu móvil usando nuestro código de ONG.", code_label: "Nuestro Código:" },
                     impact: { title: "¿A Dónde Va Tu Donación?", subtitle: "Cada euro contribuye a construir un futuro más brillante para nuestra comunidad.", item1_title: "Mantenimiento del Centro", item1_text: "Aseguramos que nuestro lugar de oración y reunión esté siempre limpio, seguro y acogedor.", item2_title: "Programas Educativos", item2_text: "Financiamos clases de Corán y árabe para niños y adultos, y organizamos charlas y talleres.", item3_title: "Eventos Comunitarios", item3_text: "Organizamos iftars, celebraciones del Eid y actividades sociales para fortalecer nuestros lazos." },
                     footer: { rights: "© 2024 Comunidad Islámica de Salamanca." }
                 },
@@ -201,7 +191,6 @@
                     methods: { title: "اختر طريقة التبرع" },
                     bank: { title: "تحويل بنكي", desc: "تبرع مباشرة إلى حسابنا البنكي. إنها طريقة آمنة وبدون عمولات.", beneficiary_label: "المستفيد", concept_label: "المفهوم", iban_label: "رقم الحساب المصرفي الدولي (IBAN)", copied: "تم النسخ!" },
                     paypal: { title: "تبرع عبر PayPal", desc: "استخدم أشهر منصة دفع عبر الإنترنت في العالم لتقديم تبرعك بسرعة وأمان.", button: "تبرع الآن" },
-                    bizum: { title: "تبرع عبر Bizum", desc: "أرسل تبرعك فوراً من هاتفك باستخدام رمز المنظمة غير الحكومية الخاص بنا.", code_label: "رمزنا:" },
                     impact: { title: "أين تذهب تبرعاتكم؟", subtitle: "كل يورو يساهم في بناء مستقبل أكثر إشراقًا لمجتمعنا.", item1_title: "صيانة المركز", item1_text: "نضمن أن مكان عبادتنا واجتماعنا دائمًا نظيف وآمن ومرحب بالجميع.", item2_title: "البرامج التعليمية", item2_text: "نموّل دروس القرآن واللغة العربية للأطفال والكبار، وننظم محاضرات وورش عمل.", item3_title: "الفعاليات المجتمعية", item3_text: "ننظم وجبات الإفطار واحتفالات العيد والأنشطة الاجتماعية لتقوية روابطنا." },
                     footer: { rights: "© 2024 الجالية الإسلامية في سلامنكا." }
                 }
